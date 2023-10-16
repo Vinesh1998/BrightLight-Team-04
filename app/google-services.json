@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1016636455229",
+    "firebase_url": "https://brightlight-7feb3-default-rtdb.firebaseio.com",
+    "project_id": "brightlight-7feb3",
+    "storage_bucket": "brightlight-7feb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016636455229:android:cdbcc55fca43d09ac72d54",
+        "android_client_info": {
+          "package_name": "com.app.brightLightBookStore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdYySFGDwizfilkgXDuPMmgjIa0qXZ5-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
