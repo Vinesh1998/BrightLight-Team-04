@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="25dp"
+        android:padding="15dp"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:tintMode="multiply"
+                android:src="@drawable/paypal"
+                app:tint="@color/primary_dark" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="PAYPAL"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.5"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gray"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="PayPal ID:"
+            />
+
+        <EditText
+            android:id="@+id/etHolderName"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="46dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="eg: Alexander@paypal"
+            android:inputType="text"
+            android:textColorHint="@color/text_hint"
+            android:paddingLeft="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="PayPal Password:"
+            />
+
+        <EditText
+            android:id="@+id/etHolderPass"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="46dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="******"
+            android:inputType="textPassword"
+            android:textColorHint="@color/text_hint"
+            android:paddingLeft="20dp" />
+        <Button
+            android:id="@+id/PayBtn"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/primary_button"
+            android:layout_marginTop="20dp"
+            android:text="Proceed to Pay"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
