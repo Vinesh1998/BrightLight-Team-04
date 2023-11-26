@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="25dp"
+        android:padding="15dp"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:tintMode="multiply"
+                android:src="@drawable/ic_baseline_credit_card_24"
+                app:tint="@color/primary_dark" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/tvCardTitle"
+                android:textColor="@color/primary_dark"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="CARD"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.5"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gray"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:text="Cart type :"
+            />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/rounded_edittext"
+            android:id="@+id/spCardSelect"/>
+        <ImageView
+            android:layout_width="85dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:id="@+id/ivCard"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:text="Card Holder Name :"
+            />
+
+        <EditText
+            android:id="@+id/etHolderName"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="46dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="eg: Alexander"
+            android:inputType="text"
+            android:textAllCaps="true"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+            android:textColorHint="@color/text_hint"
+            android:paddingLeft="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Card Number :"
+            />
+
+        <EditText
+            android:id="@+id/etCardNumber"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="46dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="eg: 1234567890"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:textColorHint="@color/text_hint"
+            android:paddingLeft="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Card CVV :"
+            />
+
+        <EditText
+            android:id="@+id/etCvv"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="46dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="eg: 123"
+            android:inputType="number"
+            android:ems="3"
+            android:minEms="3"
+            android:maxEms="3"
+            android:textColorHint="@color/text_hint"
+            android:paddingLeft="20dp" />
+        <Button
+            android:id="@+id/PayBtn"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/primary_button"
+            android:layout_marginTop="20dp"
+            android:text="Proceed to Pay"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
