@@ -218,3 +218,4 @@ public class DashboardUserActivity extends AppCompatActivity {
         });
     }
 }
+//This fuctionality is about the user activity dashboard

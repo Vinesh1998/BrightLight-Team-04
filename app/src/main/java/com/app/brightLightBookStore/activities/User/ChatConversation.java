@@ -173,3 +173,4 @@ public class ChatConversation extends BaseActivity {
     }
 
 }
+//This is the chat conversation functionality

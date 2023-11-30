@@ -151,3 +151,4 @@ public class ChangePassword extends BaseActivity {
         super.onBackPressed();
     }
 }
+//This module deals with the change password functionality

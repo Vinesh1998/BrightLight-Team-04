@@ -55,3 +55,4 @@ public class SearchGenreBooks extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
 }
+//This functionality is about the specific book search

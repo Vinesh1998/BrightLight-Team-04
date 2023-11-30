@@ -190,3 +190,4 @@ public class BookDetails extends AppCompatActivity {
                 );
     }
 }
+//It displays the all the book details

@@ -160,3 +160,4 @@ public class SearchBooksActivity extends AppCompatActivity {
         searchBooksAdapter.updateList(temp);
     }
 }
+//This functionality is about searching/finding a book

@@ -95,3 +95,4 @@ public class UserHistory extends AppCompatActivity {
         });
     }
 }
+//This functionality is for the user history

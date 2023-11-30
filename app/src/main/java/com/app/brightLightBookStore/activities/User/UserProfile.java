@@ -149,3 +149,4 @@ public class UserProfile extends BaseActivity {
     }
 
 }
+//This functionality is about the user profile

@@ -177,3 +177,4 @@ public class PaymentActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
+//This functionality is about the payment activity of the application

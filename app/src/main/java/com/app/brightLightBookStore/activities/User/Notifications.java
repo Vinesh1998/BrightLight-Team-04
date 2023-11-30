@@ -150,3 +150,4 @@ public class Notifications extends AppCompatActivity {
         });
     }
 }
+//This functionality is about the notifications
