@@ -125,7 +125,7 @@ public class CreateAccountActivity extends BaseActivity {
             etPassword.setError("Required");
             result = false;
         }
-        String passwordInput = stPassword;
+        String passwordInput = etPassword.getText().toString();
         if (!passwordInput.matches(".*[0-9].*")) {
             etPassword.setError("Password should contain at least 1 digit");
             tvPassError.setVisibility(View.VISIBLE);
@@ -173,3 +173,4 @@ public class CreateAccountActivity extends BaseActivity {
         mDatabase.child("users").child(userId).setValue(user);
     }
 }
+//This is the code for create account functionality
