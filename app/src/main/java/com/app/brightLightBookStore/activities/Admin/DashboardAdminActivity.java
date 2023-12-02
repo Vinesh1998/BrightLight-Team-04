@@ -48,7 +48,7 @@ public class DashboardAdminActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(),BooksManagementActivity.class));
         });
         btnPurchases.setOnClickListener(view->{
-            startActivity(new Intent(getApplicationContext(),UserRentals.class));
+            startActivity(new Intent(getApplicationContext(),UserPurchases.class));
         });
         btnRentals.setOnClickListener(view->{
             startActivity(new Intent(getApplicationContext(),UserRentals.class));
@@ -66,3 +66,4 @@ public class DashboardAdminActivity extends AppCompatActivity {
     }
 
 }
+//This functionality is about the admin activity

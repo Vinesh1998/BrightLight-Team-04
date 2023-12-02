@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -42,7 +43,7 @@ public class AdminChatConversation extends BaseActivity {
     EditText etMsg;
     FloatingActionButton btnSend;
     TextView tvTitle;
-    String msg_sender_name,msg_sender_id;
+    String msg_receiver_name,msg_receiver_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,7 @@ public class AdminChatConversation extends BaseActivity {
         mAuth = FirebaseAuth.getInstance();
 
         ivBack.setOnClickListener(view -> {
-            super.onBackPressed();
+            startActivity(new Intent(this, AdminChats.class));
         });
 
         Intent intent = getIntent();
@@ -76,11 +77,12 @@ public class AdminChatConversation extends BaseActivity {
         //popular
         chats = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance().getReference("chats");
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean flag =false;
+                chats.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     try {
                         flag = true;
@@ -93,23 +95,27 @@ public class AdminChatConversation extends BaseActivity {
                             String msg = ds.child("msg").getValue(String.class);
                             String date = ds.child("date").getValue(String.class);
                             String time = ds.child("time").getValue(String.class);
+                            boolean status = ds.child("status").getValue(boolean.class);
+                            boolean flag_loc = ds.child("flag").getValue(boolean.class);
                             tvTitle.setText(sender_name+"'s Chat");
-                            msg_sender_name = sender_name;
-                            if(!sender.equals("1"))
-                                msg_sender_id = sender;
-                            chats.add(new Chat(id,msg,date,time, sender,sender_name,receiver,receiver_name,true));
+                            msg_receiver_name = sender_name;
+                            if(!sender.equals("1"))    msg_receiver_id = sender;
+                            Chat ch = new Chat(id,msg,date,time, sender,sender_name,receiver,
+                                    receiver_name,status, true);
+                            chats.add(ch);
+                            //update to flag
+                            mDatabase.child(id).setValue(ch);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
                     myChatsAdapter = new AdminChatConversationsAdapter(chats, getApplicationContext(),"1");
                     recycler.setAdapter(myChatsAdapter);
                     recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
                     myChatsAdapter.notifyDataSetChanged();
                 }
-                if(!flag) {
-                    Toast.makeText(getApplicationContext(), "empty!", Toast.LENGTH_SHORT).show();
-                }
+                if(!flag)    Toast.makeText(getApplicationContext(), "empty!", Toast.LENGTH_SHORT).show();
             }  @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
@@ -127,7 +133,8 @@ public class AdminChatConversation extends BaseActivity {
                 mDatabase = FirebaseDatabase.getInstance().getReference();
                 String dbKey = mDatabase.getDatabase().getReference("chats").push().getKey();
 
-                Chat chat = new Chat(dbKey,msg , now, time, "1", "Admin", msg_sender_id,msg_sender_name,true);
+                Chat chat = new Chat(dbKey,msg , now, time, "1", "Admin", msg_receiver_id,
+                        msg_receiver_name,false, true);
                 mDatabase.child("chats").child(dbKey).setValue(chat)
                         .addOnSuccessListener(command -> {
                             chats.add(chat);
@@ -147,10 +154,9 @@ public class AdminChatConversation extends BaseActivity {
             }
         });
     }
-
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+       startActivity(new Intent(this, AdminChats.class));
     }
-
 }
+//This functionality is of the admin chat conversation with the users

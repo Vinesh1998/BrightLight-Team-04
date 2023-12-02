@@ -1,5 +1,6 @@
 package com.app.brightLightBookStore.activities.Admin;
 
+import static com.app.brightLightBookStore.helpers.common_helper.getAdminGenres;
 import static com.app.brightLightBookStore.helpers.common_helper.getGenres;
 
 import android.annotation.SuppressLint;
@@ -159,7 +160,7 @@ public class BooksManagementActivity extends AppCompatActivity implements
 
         spin =  bottomSheetDialog.findViewById(R.id.spGenres);
         spin.setOnItemSelectedListener(this);
-        genres = getGenres();
+        genres = getAdminGenres();
 
         //Creating the ArrayAdapter instance having the country list
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item, genres);
@@ -297,3 +298,4 @@ public class BooksManagementActivity extends AppCompatActivity implements
         }
     }
 }
+//This functionality is for the books management activity

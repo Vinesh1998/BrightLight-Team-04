@@ -1,10 +1,7 @@
 package com.app.brightLightBookStore.activities.Admin;
 
-import static com.app.brightLightBookStore.adapter.CartBookAdapter.df;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class UserRentals extends AppCompatActivity {
+public class UserPurchases extends AppCompatActivity {
     ImageView ivBack;
     private FirebaseAuth mAuth;
     AdminBookHistoryAdapter adminBookHistoryAdapter;
@@ -39,7 +36,7 @@ public class UserRentals extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_rentals);
+        setContentView(R.layout.activity_user_purchases);
         ivBack = findViewById(R.id.ivBack);
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
@@ -72,18 +69,14 @@ public class UserRentals extends AppCompatActivity {
                         int cart_qty = ds.child("cart_qty").getValue(Integer.class);
                         Double purchase_amt = ds.child("purchase_amt").getValue(Double.class);
                         Double rental_amt = ds.child("rental_amt").getValue(Double.class);
-
-                        boolean return_flag = false;
-                        try {
-                             return_flag = ds.child("flag_return").getValue(boolean.class);
-                        }catch (Exception ex){}
-
                         int days = ds.child("days").getValue(Integer.class);
 
-                        if (rental_amt > 0)
-                            bookHistories.add(new HistoryBook(id, user_id, book_id, auth_name, book_name,
-                                    image, purchase_amt, rental_amt, purchase_date, cart_qty, days, return_flag));
-                    }catch (Exception e) {
+                        if (purchase_amt > 0) {
+                            bookHistories.add(new HistoryBook(id,user_id,book_id,auth_name,book_name,
+                                    image,purchase_amt,rental_amt, purchase_date,cart_qty,days, false));
+                        }
+
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -92,6 +85,7 @@ public class UserRentals extends AppCompatActivity {
                 }
 
                 Collections.reverse(bookHistories);
+
                 adminBookHistoryAdapter = new AdminBookHistoryAdapter(bookHistories, getApplicationContext());
                 recycler.setAdapter(adminBookHistoryAdapter);
                 recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
@@ -105,4 +99,4 @@ public class UserRentals extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
 }
-//This functionality deals with the user rentals
+//This functionality deals with the user purchases
